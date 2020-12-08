@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.2)  8 DEC 2020 20:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.2)  8 DEC 2020 22:37
 entering extended mode
 **./EA_Template_Final.tex
 (EA_Template_Final.tex
@@ -381,38 +381,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
 [1
 
-{C:/Users/Stijn/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2] [3]
+{C:/Users/Stijn/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+
+ []
+
+[2] [3]
 
 LaTeX Warning: Reference `s:initiation_population' on page 4 undefined on input
- line 215.
+ line 211.
 
 [4]
 
-LaTeX Warning: Reference `s:elimination' on page 5 undefined on input line 233.
+LaTeX Warning: Reference `s:elimination' on page 5 undefined on input line 229.
 
 
-[5] [6] (EA_Template_Final.aux)
+[5] [6] [7] (EA_Template_Final.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 7972 strings out of 479799
- 124167 string characters out of 2879599
- 454681 words of memory out of 3000000
- 24873 multiletter control sequences out of 15000+200000
+ 7974 strings out of 479799
+ 124204 string characters out of 2879599
+ 455681 words of memory out of 3000000
+ 24875 multiletter control sequences out of 15000+200000
  547359 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,6n,72p,903b,262s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 66i,6n,72p,1203b,262s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Stijn\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk>{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/palatino/uplb8
 a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on EA_Template_Final.pdf (6 pages, 94731 bytes).
+Output written on EA_Template_Final.pdf (7 pages, 96476 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
+ 52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

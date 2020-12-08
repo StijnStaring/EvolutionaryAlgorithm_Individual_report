@@ -71,12 +71,14 @@
 
 \paragraph{Slow algorithm due to high calculation load:} When applying the algorithm of the group phase to the bigger problems e.g. tour $194$, the algorithm became very slow. Solutions attained were therefore of poor quality. The calculation load is still high due to the vast size of the TSP problems, but it is mitigated by the use of the cheap inver-over operator (see Section \ref{p:1}).  Also, the optimal population size is chosen to make an optimal trade off between  calculation load and quality of the solution.
 
-\paragraph{Worse results then simple greedy heuristic:}Because of the use of a rich initial population (Section \ref{p:2}) the genetic algorithm already starts from a solution better than the simple greedy heuristic. This means that the gap that it has to bridge to reach the optimal solution is made much smaller.
+\paragraph{Worse results than simple greedy heuristic:}Because of the use of a rich initial population (Section \ref{p:2}) the genetic algorithm already starts from a solution better than the simple greedy heuristic. This means that the gap that it has to bridge to reach the optimal solution is made much smaller.
 
 \paragraph{Instantaneous loss of diversity:} During the group phase good solutions rapidly took over the population which caused the algorithm to get stuck early in a local minima. This could be seen because the mean cost and the best cost quickly converged to each other which indicates that the diversity was completely gone. Therefore, the algorithm was not able to reach the optimal solution. The mean value of the best solution was still around a cost of $4000$ away from the optimal solution after $10$ runs on the smallest problem. Additionally, there was a lot of variation on the solutions. This follows from the poor domain exploration, whereby the local minima that were reached are mainly based on random factors during the initialization of the population, the selection operator and the mutation operator. The reason for a rapid loss of diversity was a too high exploitation pressure that was introduced by making use of the $\lambda/\mu$ - elimination scheme in combination with a too high k value during k-tournament selection. Also, was initialized by introducing random routes. This not necessarily lead to a diverse population. \\
-With the implementation of a parallel selection and elimination operator good solutions taking over the population is avoided. 
+Because the inver-over operator only copies one edge at a time during cross over with a different individual and after a variable amount of cross overs and mutations the ``3-opt'' local search is applied, the population is not easily taken over by good individuals. 
 
-\paragraph{Increasing cost of the best solution} During testing in the group phase it was found that the best solution sometimes increased in cost. Because a $\lambda/\mu$ - elimination scheme was used the reason for this will have been the mutation operator. By making use of the parent vs offspring comparison in the current implementation this behaviour is avoided. 
+%With the implementation of a parallel selection and elimination operator good solutions taking over the population is avoided. 
+
+\paragraph{Increasing cost of the best solution:} During testing in the group phase it was found that the best solution sometimes increased in cost. Because a $\lambda/\mu$ - elimination scheme was used the reason for this will have been the mutation operator. By making use of the parent vs offspring comparison in the current implementation this behaviour is avoided. 
 
 
 \section{Final design of the evolutionary algorithm:} 
@@ -86,38 +88,31 @@ With the implementation of a parallel selection and elimination operator good so
 
 \subsection{Representation}
 
-\ReplaceMe{How do you represent the candidate solutions? What is your motivation to choose this one? What other options did you consider? How did you implement this specifically in Python (e.g., a list, set, numpy array, etc)?}
-
-Each solution is an object with different features and methods. Objects handy to group features.
-
-Routes are simple list. Lots of build in operators to work with lists. easy to modify.  connection start and end made in cost calculation. Efficiency increased --> cost assigned to object. 
-
-List is easy to modify --> easy to calculate fitness. 
-
-This is a direct representation of the solution domain, because each city can only be visited once.
+Each individual solution is represented by an object of the Travelling Sales Man class. This structure allows for grouping different features i.e. cost of the route and the route followed itself. The order of the cities visited matches with the order of numbers that are listed and wherefore each number identifies a city.  Lists are easy to modify and a lot of build in operators can be used. Also the list can intuitive be converted to a graph notation by assigning an edge from the current city to city on the next index. During cost calculation, the cost of the edge between the last and the first element should not be forgotten.
 
 \subsection{Initialization}
 
 \ReplaceMe{How do you initialize the population? How did you determine the number of individuals? Did you implement advanced initialization mechanisms (local search operators, heuristic solutions)? If so, describe them. Do you believe your approach maintains sufficient diversity? How do you ensure that your population enrichment scheme does not immediately take over the population? Did you implement other initialization schemes that did not make it to the final version? Why did you discard them? How did you determine the population size?}
 
-Have tried the heuristic nearest neighbours to initialize the population. After the initialization applied 3-opt local search technique. 
+The population is initialized in two steps. The first step comprises a ``Nearest Neighbours'' heuristic and the second step applies a ``3-opt'' local search operator(see Section \ref{s:local_search}). 
+
+The NN heuristic is implemented by choosing a random start city and always keep travelling from the current city to the nearest, next city. Additionally, to get a higher amount of diversity at a low calculation cost, it is expected to use every city only once to start from. It can be that the demanded population size is bigger than the amount of available start cities. In this case, after all the start cities have been used by the NN heuristic, randomly generated routes are inputted to the ``3-opt'' local search operator. The amount of iterations applied by ``3-opt'' is a parameter that is identified during the hyperparameter optimization. The time needed to initialize $100$ individuals in the 29 tour problem takes around $0.7$ seconds.\\
+
+For bigger problems a rather small population is chosen to cut the calculation load. For the tour $194$ in example, the initial population size is set to ????. As discussed earlier, because the inver-over operator only copies one edge at a time during cross over with a different individual and after a variable amount of cross overs and mutations the ``3-opt'' local search is applied, the population is not easily taken over by good individuals and the population thus maintains its diversity. 
 
 
-NN explained ...
-
-Local search --> 3 opt (high calculation load) see section 4.7
-
-Rather small population to cut the calculation cost. For the small problem
-
-Experimented with using NN for only half of the population and the rest randomly generated. Whereafter 3 opt was used. This only slowed down convergence, so used NN instead for the whole population. To improve diversity in the initial population, the NN is starting from a random start city that only can be selected once. 
 
 
-Because the use of the heuristic and local search --> started with a richer population and genetic algorithm was expected to do the small, last improvement until optimum. 
 
-Time to initialize $100$ individuals in the 29 tour problem: ...
+%Rather small population to cut the calculation cost. For the small problem
+%
+%Experimented with using NN for only half of the population and the rest randomly generated. Whereafter 3 opt was used. This only slowed down convergence, so used NN instead for the whole population. To improve diversity in the initial population, the NN is starting from a random start city that only can be selected once. 
+%
+%
+%Because the use of the heuristic and local search --> started with a richer population and genetic algorithm was expected to do the small, last improvement until optimum. 
 
 
-if the population size is bigger than the amount of availabel start cities for the NN, random routes are put in the population. 
+
 
 \subsection{Selection operators}
 
@@ -147,6 +142,8 @@ Can try a decreasing probability of mutation with the increase of the amount of 
 
 Also tried greedy mutation. Removing between $4$ and $7$ edges --> greedy reconnect the individual parts. Too expensive. 
 
+
+3.In the beginning generations it is good to have a large probability of mutation but towards the end it needs to be smaller
 
 
 \subsection{Recombination operators}
@@ -191,7 +188,7 @@ pop --> others more change to be selected. More randomness in the elimination an
 
 Experimented in elimination step with diversity mechanisms. (overlap edges/ same routes)
 
-\subsection{Local search operators}
+\subsection{Local search operators}\label{s:local_search}
 
 \ReplaceMe{What local search operators did you implement? Describe them. Did they cause a significant improvement in the performance of your algorithm? Why (not)? Did you consider other local search operators that did not make the cut? Why did you discard them? Are there parameters that need to be determined in your operator? Do you use an advanced scheme to determine them (e.g., adaptive or self-adaptive)?}
 
@@ -207,6 +204,8 @@ Implemented a 3 opt local search operator and not 2 opt. 2 opt is inversion, 3 o
 enhanced with two local searches. 
 
 Graph of the flow of the algorithm --> one heuristic and local search technique. 
+
+Local search --> 3 opt (high calculation load) see section 4.7
 
 \subsection{Diversity promotion mechanisms}
 
@@ -250,6 +249,8 @@ Robust because only three parameters.
 
 
 Self-adaptivity was tried for the mutation parameter. Similar results were attained as during the hyper search. 
+
+Amount of ``3-opt'' iterations performed. 
 
 
 \subsection{Other considerations}
