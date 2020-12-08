@@ -37,7 +37,7 @@
 
 \maketitle
 
-\section{\RemoveMe{Formal requirements}} \label{sec_this}
+%\section{\RemoveMe{Formal requirements}} \label{sec_this}
 
 \section{Metadata}
 
@@ -51,56 +51,38 @@
 
 \section{Modifications since the group phase}
 
-\RemoveMe{\textbf{Goal:} Based on this section, we will evaluate insofar as you are able to analyse common problems arising in the design and implementation of evolutionary algorithms and your ability to effectively solve them.}
+%\RemoveMe{\textbf{Goal:} Based on this section, we will evaluate insofar as you are able to analyse common problems arising in the design and implementation of evolutionary algorithms and your ability to effectively solve them.}
 
 \subsection{Main improvements}
 
 %\ReplaceMe{List the main changes that you implemented since the group phase. You do not need to explain the employed techniques in detail; for this, you should refer to the appropriate subsection of section 3 of the report.}
 
-Biggest issue was the calculation load. 
 
-Diversity was instantaneous lost and the algorithm was therefore rapidly stuck and very early convergence was reached. --> much variation on solutions around a cost of 4000 for the best solution.
-random initialization of the population does not necessarily lead to diverse population --> have used NN with a random selection of cities to choose. Always different random start. Experimented in elimination step with diversity mechanisms. (overlap edges/ same routes)
+%\paragraph{Short description 1:} \ReplaceMe{State what modification you made (e.g., replaced top-$\lambda$ selection with $k$-tournament selection). What aspect of your evolutionary algorithm did it improve?} 
 
-To big exploitation pressure with lambda plus mu. Replaced by a diverse k tournament scheme. Element is removed from pop --> others more change to be selected. More randomness in the elimination and reduces the exploitation pressure and increases the exploration. 
 
-No measure taken to handle the ATSP in comparison with the normal TSP --> work with greedy operators that always cheapest. Take into account if inverse is very expensive. Implemented a 3 opt local search operator and not 2 opt. 2 opt is inversion, 3 opt is insertion of a subpath and is enhanced with two local searches. 
+\paragraph{1 Inver-over operator}\label{p:1}The final implementation of the evolutionary algorithm makes use of an inver-over operator. This operator tries to combine the advantage of unary operators as mutation and binary operators as cross over which has respectively low calculation cost and a notion of the population. This operator replaces the sequential constructive cross over and the scramble mutation operators. ``SCX'' is a suitable operator but not efficient enough for big problems and scramble is a naive method that breaks a lot of edges and can therefore damage good solutions.  They where both replaced by inversion operators.
 
-scramble can destroy the solution a lot, so it is good to be used in the beginning iterations but in the ending iterations maybe you can use some better mutation. --> a very naive method that scrambels the route without knowledge. --> leads to variance solutions and unpredictability. Enhanced by greedy mutation. 
+\paragraph{2 Enrichment of the initial population}\label{p:2} The ``Nearest Neighbours'' heuristic is used to initialize the population. In order to enhance the diversity it is not allowed to start multiple times from the same city when building up a solution. Afterwards the local search technique ``3-opt'' is applied for a couple of iterations. This local search technique is also used after the variation operators. After initialization of the population a best solution of $28074$ is attained in $0.69$ seconds which is better than the mean best solution during the group phase which was around $32250$. For this result population size was set to $100$.
 
-The Sequential cross over operator was reasonable good. Changed to greedy cross over. Take overlap and instead of looking to best costs between two individuals, look at the best cost in the population. 
-
-Very high start cost, the algorithm had to bridge a big distance --> NN and 3 opt on initial solution.
-
-The mean cost of the best solution after applying the genetic algorithm in the group phase was around 32500. Now the mean is already around 28300 after initialization of the population. 
-
-Calculation cost is still an issue in the bigger problems. Tried to reduce this issue by working with a smaller population size. 
-
-Best solution went up and down during the group phase. Solved by implementing elitism. The best solution is always retained over the generations.
-
-\paragraph{Short description 1:} \ReplaceMe{State what modification you made (e.g., replaced top-$\lambda$ selection with $k$-tournament selection). What aspect of your evolutionary algorithm did it improve?} 
-
-\vdots
-
+\paragraph{3 Parallel selection and elimination}\label{p:3} After retrieving a good initial population, each individual is sequentially chosen to be adjusted by the means of variation operators. After a variable amount of adaptations the offspring is compared with its parent and the most fittest solution is included in the next generation. 
 
 \subsection{Issues resolved}
-\ReplaceMe{Recall the list of issues from the group phase. Describe how you solved these issues in the individual phase.}
-\begin{itemize}
-	\item Algorithm has a too high calculation load for the big TSP problems. Try 
-\end{itemize}
+
+\paragraph{Slow algorithm due to high calculation load:} When applying the algorithm of the group phase to the bigger problems e.g. tour $194$, the algorithm became very slow. Solutions attained were therefore of poor quality. The calculation load is still high due to the vast size of the TSP problems, but it is mitigated by the use of the cheap inver-over operator (see Section \ref{p:1}).  Also, the optimal population size is chosen to make an optimal trade off between  calculation load and quality of the solution.
+
+\paragraph{Worse results then simple greedy heuristic:}Because of the use of a rich initial population (Section \ref{p:2}) the genetic algorithm already starts from a solution better than the simple greedy heuristic. This means that the gap that it has to bridge to reach the optimal solution is made much smaller.
+
+\paragraph{Instantaneous loss of diversity:} During the group phase good solutions rapidly took over the population which caused the algorithm to get stuck early in a local minima. This could be seen because the mean cost and the best cost quickly converged to each other which indicates that the diversity was completely gone. Therefore, the algorithm was not able to reach the optimal solution. The mean value of the best solution was still around a cost of $4000$ away from the optimal solution after $10$ runs on the smallest problem. Additionally, there was a lot of variation on the solutions. This follows from the poor domain exploration, whereby the local minima that were reached are mainly based on random factors during the initialization of the population, the selection operator and the mutation operator. The reason for a rapid loss of diversity was a too high exploitation pressure that was introduced by making use of the $\lambda/\mu$ - elimination scheme in combination with a too high k value during k-tournament selection. Also, was initialized by introducing random routes. This not necessarily lead to a diverse population. \\
+With the implementation of a parallel selection and elimination operator good solutions taking over the population is avoided. 
+
+\paragraph{Increasing cost of the best solution} During testing in the group phase it was found that the best solution sometimes increased in cost. Because a $\lambda/\mu$ - elimination scheme was used the reason for this will have been the mutation operator. By making use of the parent vs offspring comparison in the current implementation this behaviour is avoided. 
 
 
-\paragraph{Short description 1:} \ReplaceMe{Describe the observation or problem from the group phase. Explain what caused this issue. How did you solve it (you can refer to the list of improvements)? Did fixing it significantly benefit your evolutionary algorithm? If you did not fix it: why not?}
-
-\vdots
-
-\section{Final design of the evolutionary algorithm} 
-Graph of the flow of the algorithm --> one heuristic and local search technique. 
-
-
-\RemoveMe{\textbf{Goal:} Based on this section, we will evaluate insofar as you are able to design and implement an advanced, effective evolutionary algorithm for solving a model problem.}
-
-\ReplaceMe{In this section, you should describe all components of your final evolutionary algorithm and how they fit together.}
+\section{Final design of the evolutionary algorithm:} 
+%\RemoveMe{\textbf{Goal:} Based on this section, we will evaluate insofar as you are able to design and implement an advanced, effective evolutionary algorithm for solving a model problem.}
+%
+%\ReplaceMe{In this section, you should describe all components of your final evolutionary algorithm and how they fit together.}
 
 \subsection{Representation}
 
@@ -135,6 +117,8 @@ Because the use of the heuristic and local search --> started with a richer popu
 Time to initialize $100$ individuals in the 29 tour problem: ...
 
 
+if the population size is bigger than the amount of availabel start cities for the NN, random routes are put in the population. 
+
 \subsection{Selection operators}
 
 \ReplaceMe{Which selection operators did you implement? If they are not from the slides, describe them. Can you motivate why you chose this one? Are there parameters that need to be chosen? Did you use an advanced scheme to vary these parameters throughout the iterations? Did you try other selection operators not included in the final version? Why did you discard them?}
@@ -143,7 +127,9 @@ Made use of competition based selection mechanism. The k tournament operator is 
 
 Have chosen for k - tournament selection. A small adjustment with respect to the ones in the slides is the use of a variable k value. Start with small k --> more exploration . Later higher k, more exploitation. If more individuals are selected, there is a higher change that among the selected individuals also a very good solution is chosen. This solution will rule out the rest which leads to more the same individuals used in the recombination operator and thus more exploitation towards this good solution. 
 
-Other operators tried are the exponentially decaying ranking with a decreasing s value over time. Results were similar. 
+K-tournament (keeping best individual but still some randomness),
+
+Other operators tried are the exponentially decaying ranking with a decreasing s valu  e over time. Results were similar. 
 
 In the final version selected every individual in the population for a variable amount of cross overs and mutations. 
 
@@ -155,7 +141,7 @@ In the final version selected every individual in the population for a variable 
 \ReplaceMe{Which mutation operators did you implement? If they are not from the slides, describe them. How do you choose among several mutation operators? Do you believe it will introduce sufficient randomness? Can that be controlled with parameters? Do you use self-adaptivity? Do you use any other advanced parameter control mechanisms (e.g., variable across iterations)? Did you try other mutation operators not included in the final version? Why did you discard them?}
 
 A mutation operator functions as a random local search and introduces randomly new edges in the population. It is often applied with a small probability in order not to damage good solutions to hard. Mutation is an unary operator which means that it only takes one individual as input and the operator is not population driven.
-The mutation that is finally chosen is a simple reversion mutation. Subset selected and reversed. This can be efficiently implemented --> only two edges change. 
+The mutation that is finally chosen is a simple inversion mutation. Subset selected and inversed. This can be efficiently implemented --> only two edges change. 
 
 Can try a decreasing probability of mutation with the increase of the amount of generations. You don't want the mutation operator to ruin your solutions. And tried self-adaptivity which gave similar values as during the hyper search. 
 
@@ -167,15 +153,21 @@ Also tried greedy mutation. Removing between $4$ and $7$ edges --> greedy reconn
 
 \ReplaceMe{Which recombination operators did you implement? If they are not from the slides, describe them. How do you choose among several recombination operators? Why did you choose these ones specifically? Explain how you believe that these operators can produce offspring that combine the best features from their parents. How does your operator behave if there is little overlap between the parents? Can your recombination be controlled with parameters; what behavior do they change? Do you use self-adaptivity? Do you use any other advanced parameter control mechanisms (e.g., variable across iterations)? Did you try other recombination operators not included in the final version? Why did you discard them? Did you consider recombination with arity strictly greater than 2?}
 
+Recombination is generally a binary operator with as goal to identify the good characteristics of the candidate solution and transfer this to the offspring. For the TSP problem it is therefore important to look at the overlap of two solutions and copy this to the offspring. 
 
+In the group phase had an okay implementation of a sequential constructive cross over operator. But even this too expensive. Overlap was copied to the offspring and for the other edges there was looked at the best alternative given by the two parents. This second step could however by extended as is done in the ``Greedy recombination''. Here the selection of the best alternative is not reduced to the domain of two parents but uses the best alternative given the whole population. The workflow of the ``Greedy recombination'' goes as follows. After the overlap between the parents is copied to the offspring and the rest of the edges are deleted, a greedy approach is used to make the offspring legitimate.  
 
-Implemented the inver-over operator. Its power was its simpleness because the cross over was based on simple inversion of a sub part of an individual. This operator combines the advantage of unary and binary operators. This means a low cost and still a notion of the population in the selection of the subset to reverse. and thus was a cheap unary operator. The selection however of the segement was still population driven. Optimal solutions were consistently found for the tour29 problem. 
+Overlap is copied to the offspring and the rest of the edges are deleted. A random start city is chosen and the offspring is gradually build up make use of a greedy approach. 
+
+Implemented the inver-over operator. Its power was its simpleness because the cross over was based on simple inversion of a sub part of an individual. This operator combines the advantage of unary and binary operators. This means a low cost and still a notion of the population in the selection of the subset to inverese. and thus was a cheap unary operator. The selection however of the segement was still population driven. Optimal solutions were consistently found for the tour29 problem. 
+
+inver - over --> selects city to inverse. The connection original in the parent is now embedded in the offspring. 
 
 downside --> inversion doesn't take the assymmetric cost matrix into account. This means that during an inversion a lot of edges are changed. Therefore there has be further looked at a greedy recombination operator. but too slow. Inversion combined with the more expensive 3 opt local search operator that is suitable for a ATSP problem, gave the best results. 
 
-Overlap is copied to the offspring and rest of the edges are deleted. A random start city is chosen and the 
 
-In the group phase had an okay implementation of a sequential constructive cross over operator. But even this too expensive. 
+
+
 
 \subsection{Elimination operators}
 
@@ -185,26 +177,44 @@ The offspring goes through a variable amount of mutations and recombinations whe
 
 By definition the best solution will always remain which means that the up and down movements of the best solution that were present during the group phase are avoided.  
 
+A form of elitism  is in effect.
+
 Tried lambda + mu --> too exploitive. 
 Tried k-tournament elimination
 
 Would have been better if would check the similarity of edges between different solutions and based on this increase the cost and so decrease the probability that an individual would be selected. The implementation that was made was however to calculation expensive to be efficient. Therefore the cheaper method of preventing the same route to be included in the survivors has been used. 
 
-k tournament was implemented with the condition that the same individuals are discarted from the population when transferred to the survivors. It is thus not possible to select it, which ensures that the population in the next generation will all be different solutions of the problem. 
+k tournament was implemented with the condition that the same individuals are discarded from the population when transferred to the survivors. It is thus not possible to select it, which ensures that the population in the next generation will all be different solutions of the problem. 
+
+Replaced by a diverse k tournament scheme. Element is removed from 
+pop --> others more change to be selected. More randomness in the elimination and reduces the exploitation pressure and increases the exploration. 
+
+Experimented in elimination step with diversity mechanisms. (overlap edges/ same routes)
 
 \subsection{Local search operators}
 
 \ReplaceMe{What local search operators did you implement? Describe them. Did they cause a significant improvement in the performance of your algorithm? Why (not)? Did you consider other local search operators that did not make the cut? Why did you discard them? Are there parameters that need to be determined in your operator? Do you use an advanced scheme to determine them (e.g., adaptive or self-adaptive)?}
 
-NN developed and still used for the initialization of the population.
-Naive three opt by swapping, two opt is considered
-And efficient three opt based on two local searches that only considers the most potential cities for the three swap. 
+Naive three opt by swapping three randomly chosen edges on look at eight ways to reconnect them. If there was an improvement the swap was executed. A lot of zeros before found an improvement. 
 
-Let the local search run until convergence for the small problem. 
+And efficient three opt based on two local searches that only considers the most potential cities for the three swap. Based on the condition that the new edges should make an improvement with respect to the old ones. 
+
+Add two figures of the two cases that are compared. Looking for a subsegment of the tour to insert between two nodes and optionally on top of that inverse.
+
+Could let the local search run until 3 opt optimality for the tour $29$ problem which enhanced convergence speed. However this became too expensive for the other problems. Therefore, in the current implementation only one loop over the whole route is considered. 
+
+Implemented a 3 opt local search operator and not 2 opt. 2 opt is inversion, 3 opt is insertion of a subpath and is 
+enhanced with two local searches. 
+
+Graph of the flow of the algorithm --> one heuristic and local search technique. 
 
 \subsection{Diversity promotion mechanisms}
 
 \ReplaceMe{Did you implement a diversity promotion scheme? If yes, which one? If no, why not? Describe the mechanism you implemented. In what sense does the mechanism improve the performance of your evolutionary algorithm? Are there parameters that need to be determined? Did you use an advanced scheme to determine them?}
+
+In the current implementation diversity is ensured during the initialization of the population by always staring from a different start city as is discussed in section \ref{s:initiation_population}. Because only offspring and parents are compared, a good solution can't take over the population. Each candidate solutions is improving in parallel and benefits indirectly through recombination by the increasing quality of the overall population. 
+
+clearly say what else have tried that it is not implemented in the final solution!!
 
 Say that added diversity promotion in the elimination, because than you have a direct effect. This is not the case when you add a diversity mechanism in the selection step, because cross over and mutation can influence the diversity of the population. 
 
@@ -236,11 +246,17 @@ Here is a table with the final parameters: ...
 
 The parameters for the bigger problem can be obtained in a similar way. 
 
+Robust because only three parameters.
+
+
+Self-adaptivity was tried for the mutation parameter. Similar results were attained as during the hyper search. 
+
+
 \subsection{Other considerations}
 
 \ReplaceMe{Did you consider other items not listed above, such as elitism, multiobjective optimization strategies (e.g., island model, pareto front approximation), a parallel implementation, or other interesting computational optimizations (e.g. using advanced algorithms or data structures)? You can describe them here or add additional subsections as needed.}
 
-Elitism is implemented. Talk about parallel implementation. The operators are good, but solution can be improved towards cheaper implementations of these operators.
+ The operators are good, but solution can be improved towards cheaper implementations of these operators.
 
 
 \section{Numerical experiments}
