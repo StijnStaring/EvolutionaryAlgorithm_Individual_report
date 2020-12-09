@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{fast_alg}
+J.~L. Bentley.
+\newblock {Fast Algorithms for Geometric Traveling Salesman Problems}, 1992.
+
+\bibitem{Reisleben1996}
+B.~Reisleben and P.~Merz.
+\newblock {Symmetric and Asymmetric Traveling Salesman Problems}.
+\newblock {\em Proceedings of IEEE International Conference on Evolutionary
+  Computation}, pages 616--621, 1996.
+
+\bibitem{inver_over}
+G.~Tao and Z.~Michalewicz.
+\newblock {Inver-over operator for the TSP}.
+\newblock pages 1--11, 1987.
+
+\end{thebibliography}

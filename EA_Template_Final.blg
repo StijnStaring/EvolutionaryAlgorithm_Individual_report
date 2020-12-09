@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: EA_Template_Final.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: abbrv.bst
+Reallocating 'name_of_file' (item size: 1) to 17 items.
+Database file #1: Evolutionary_Alg.bib
+Warning--empty journal in inver_over
+You've used 3 entries,
+            2118 wiz_defined-function locations,
+            515 strings with 4158 characters,
+and the built_in function-call counts, 997 in all, are:
+= -- 101
+> -- 33
+< -- 2
++ -- 13
+- -- 10
+* -- 51
+:= -- 157
+add.period$ -- 8
+call.type$ -- 3
+change.case$ -- 14
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 43
+empty$ -- 82
+format.name$ -- 10
+if$ -- 219
+int.to.chr$ -- 0
+int.to.str$ -- 3
+missing$ -- 2
+newline$ -- 17
+num.names$ -- 6
+pop$ -- 21
+preamble$ -- 1
+purify$ -- 11
+quote$ -- 0
+skip$ -- 42
+stack$ -- 0
+substring$ -- 66
+swap$ -- 16
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 12
+warning$ -- 1
+while$ -- 12
+width$ -- 4
+write$ -- 31
+(There was 1 warning)
