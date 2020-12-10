@@ -90,7 +90,7 @@ Each individual solution is represented by an object of the Travelling Sales Man
 
 The population is initialized in two steps. The first step comprises a ``Nearest Neighbours'' heuristic and the second step applies a ``3-opt'' local search operator(see Section \ref{s:local_search}). \\The NN heuristic is implemented by choosing a random start city and always keep travelling from the current city to the nearest, next city. This automatically comes with the advantage of avoiding infinity costs and thus constructing a feasible solution even when not all the cities are interconnected. Additionally, to get a higher amount of diversity at a low calculation cost, it is expected to use every city only once to start from. It can be that the demanded population size is bigger than the amount of available start cities. In this case, after all the start cities have been used by the NN heuristic, randomly generated routes are inputted to the ``3-opt'' local search operator. The amount of iterations applied by ``3-opt'' is a parameter that is identified during the hyperparameter optimization. After initialization the best solution lays already close, in a range of $5\%$, from the optimal solution. The genetic algorithm is charged with the task to execute the final improvement.\\
 
-For bigger problems a rather small population is chosen to cut the calculation load. For the tour $194$ for example, the initial population size is set to ????. As discussed earlier, because the inver-over operator only copies one edge at a time during cross over with a different individual and because a variable amount of cross overs with random individuals and mutations take place after which the ``3-opt'' local search is applied, the population is not easily taken over by good individuals and the population remains diverse.
+For bigger problems a rather small population is chosen to cut the calculation load. For the tour $929$ for example, the initial population size is set to $ 10 $. As discussed earlier, because the inver-over operator only copies one edge at a time during cross over with a different individual and because a variable amount of cross overs with random individuals and mutations take place after which the ``3-opt'' local search is applied, the population is not easily taken over by good individuals and the population remains diverse.
 
 
 \subsection{Selection operators}
@@ -105,7 +105,7 @@ During the development of the evolutionary algorithm, their was a constant push 
 
 K-tournament makes use of a competition based selection mechanism. The k-tournament operator was tried because the k value makes it easy to trade off exploration and exploitation and the operator can be easy and cheaply implemented. Next, it also introduces still some randomness. The optimal k-value can be identified during hyperparameter optimization. There has been experimented by stepwise increasing the k-value with the amount of generations. Choosing k equal to $1$ at the start of the algorithm, a random selection will apply and the focus is on exploration of the solution domain. By increasing the k-value over time, a shift towards exploitation of good solutions will take place. The use of the exponentially decreasing probability distribution function based on ranking gave similar results when using a decreasing s-value.\\
 
-In the final implementation all individuals are consecutively selected to undergo a variable amount of variations. During cross over the second inversion point is identified by a different individual in the population. This different individual is randomly chosen from the population. The advantage to make use of this selection scheme is because it is cheap and no parameters should be identified. It could also be argued that using a competitive based selection mechanism in combination with a small population for the bigger problems i.e. a population size of $20$, will lead to a too big emphasis on possibly only slightly better individuals because of the high chance of being selected. 
+In the final implementation all individuals are consecutively selected to undergo a variable amount of variations. During cross over the second inversion point is identified by a different individual in the population. This different individual is randomly chosen from the population. The advantage to make use of this selection scheme is because it is cheap and no parameters should be identified. It could also be argued that using a competitive based selection mechanism in combination with a small population for the bigger problems i.e. a population size of $10$ during the tour 929 problem, will lead to a too big emphasis on possibly only slightly better individuals because of the high chance of being selected. 
 
 
 \subsection{Mutation operators}\label{s:mutation}
@@ -196,7 +196,7 @@ Because measures are taken to promote the diversity of the population, the stopp
 \end{algorithmic}
 \vspace{0.25cm}
 
-During the numerical experiments there is for the tour $ 194 $ problem also an indication given of the performance of the developed ``Greedy Method'' The operators used in this method are listed as follows:
+During the report there is often an alternative ``Greedy Method'' method mentioned. The operators of the fully developed, but later discarded, method are listed below: 
 
 \begin{itemize}
 	\item Nearest Neighbour heuristic
@@ -207,7 +207,7 @@ During the numerical experiments there is for the tour $ 194 $ problem also an i
 	\item k-tournament elimination with additional diversity condition
 \end{itemize} 
 
-\textbf{The algorithm of the Greedy method:}
+This method was tested on the tour $ 194 $ problem with hand picked parameters. Solutions obtained where of the order $ 9700 $.
 
 \subsection{Parameter selection}
 
@@ -219,7 +219,7 @@ A hyperparameter optimization is run for following variables:
 	\item Amount of iterations of the ``3-opt'' local search: $ N = [1,3,5] $
 \end{itemize}
 
-The final parameters obtained are summarized in Table \ref{t:parameters} together with the mean best objective value and the mean time. A hyperparameter optimization for the tour 29 problem is not necessary because it already consistently reaches optimal solutions with hand picked parameters. The hyperparameter optimization is performed by making the logical cores calculate in parallel. Each combination of parameters is solved $ 8 $ times and the mean best objective value and mean time is are the criteria used to compare different parameter combinations.
+The final parameters obtained are summarized in Table \ref{t:parameters} together with the best objective value, mean best objective value and the mean time. A hyperparameter optimization for the tour 29 problem is not necessary because it already consistently reaches optimal solutions with hand picked parameters. The hyperparameter optimization is performed by making the logical cores calculate in parallel. Each combination of parameters is solved $ 8 $ times and the best objective value, mean best objective value and mean time are the criteria used to compare different parameter combinations.
 
 \begin{table}[h]
 	\centering
@@ -227,12 +227,13 @@ The final parameters obtained are summarized in Table \ref{t:parameters} togethe
 		\hline
 		\textbf{Parameters} & \textbf{Value}\\ \hline
 		Dataset  & tour194.csv\\ \hline
-		Initial Population size $[-]$ & 100\\ \hline
-		Probability for mutation $[-]$ & 5.0 $\%$\\ \hline
+		Initial Population size $[-]$ & 75\\ \hline
+		Probability for mutation $[-]$ & 0.02\\ \hline
 		Iterations of 3-opt $ [-] $ & 3 \\ \hline
- 		termination value $[-]$ & 100\\ \hline
- 		Mean best fitness value $[-]$ & 100000\\ \hline
- 		Mean calculation time  $[s]$ & 0.05\\ \hline
+ 		Termination value $[-]$ & 100\\ \hline
+ 		Best fitness obtained over $ 8 $ iterations $[-]$ & 9569.90\\ \hline
+ 		Mean best fitness obtained over $ 8 $ iterations $[-]$ & 9703.05\\ \hline
+ 		Mean calculation time over $ 8 $ iterations  $[s]$ & 300\\ \hline
 	\end{tabular}
 	\caption{Used parameters for the results shown for tour 100 and tour 194.}
 	\label{t:parameters}
@@ -273,21 +274,21 @@ The tour that is associated with this cost is: \\
 Tour 29  = 	[21, 20, 16, 17, 18, 14, 11, 10, 9, 5, 0, 1, 4, 7, 3, 2, 6, 8, 12, 13, 15, 23, 24, 26, 19, 25, 27, 28, 22]
 \end{equation*}
 
-The parameters used to obtain the convergence plot and the histograms were picked by hand and are listed here:
+The parameters used to obtain the convergence plot were picked by hand and are listed here in Table \ref{t:parameters}. For the histograms the termination value is set on $ 50 $ instead of $ 20 $, to remove small variations in the objective values found.
 \begin{itemize}
 	\item Population size: $ 100 $
 	\item Mutation rate: $ 0.02 $
 	\item Amount of loops of the ``3-opt'' local search: $ 5 $
-	\item Amount of times no different best solution: $ 20 $ 
+	\item Termination value: amount of times no different best solution: $ 20 $ 
 \end{itemize}
   
 Because the mean and best solution don't directly convergence to each other, it can be concluded that the problem of instantaneous loss of the diversity is solved. Also, the solution isn't changing much anymore after $ 15 $ seconds. The algorithm convergences consistent to the optimal value. 
 
 
 \begin{figure}[h]
-	\label{fig:convergence_tour29}
 	\includegraphics[width=1\textwidth]{Convergence_tour29.PNG}
 	\caption{Convergence plot of the tour 29 TSP}
+	\label{fig:convergence_tour29}
 	\centering
 \end{figure}
 
@@ -312,31 +313,54 @@ The mean best solution and the standard deviation of the tour 29 TSP after $ 100
 
 
 \subsection{tour100.csv}
-The best tour length that is found has a cost of $  $.
-The parameters used can be seen in Table \ref{t:parameters}.
+The best tour length that is found has a cost of $ 7510.80 $.\footnote{The runtime warning encountered during testing is no problem. To remove it, redundant code is necessary that would make the implementation slower. }
+The parameters used can be seen in Table \ref{t:parameters} and the convergence plot is given by Figure \ref{fig:convergence_tour100}.
 
+\begin{figure}[h]
+	
+	\includegraphics[width=1.0\textwidth]{convergence_tour100.PNG}
+	\caption{Convergence plot of the tour 100 TSP}
+	\label{fig:convergence_tour100}
+	\centering
+\end{figure}
 
-
-Divergence stays sufficient high and reasonable solutions are attained. Because of the increasing complexness of the problem, less good results are attained. 
-
-%Interpret your results. How do you rate the performance of your algorithm (time, memory, speed of convergence, diversity of population, quality of the best solution, etc)? Is your solution close to the optimal one?}
+Divergence stays sufficient high and reasonable solutions are attained. The best solution of the three has still an error of $ 2.1 \% $ with respect to the optimal solution. There is also more variability on the obtained solutions. It can be expected that when the algorithm is given more calculation resources, the variance will also decrease. All three solutions use the total $ 5 $ minutes of calculation time.
 
 \subsection{tour194.csv}
-The best tour length that is found has a cost of $  $.
+The convergence plot can be seen in Figure \ref{fig:convergence_tour194}.
+The best tour length that is found during these $ 3 $ runs has a cost of $9716.99  $ which means that all these three runs behaved worse than the mean best value identified during hyperparameters optimization. Here the mean best value was $ 9703.05 $ with a best objective value over $ 8 $ runs of $ 9569.90 $.
 The parameters used can be seen in Table \ref{t:parameters}.
 
+\begin{figure}[h]
+	\includegraphics[width=1.0\textwidth]{convergence_tour194.PNG}
+	\caption{Convergence plot of the tour 194 TSP}
+	\label{fig:convergence_tour194}
+	\centering
+\end{figure}
 
+Again it can be seen that divergence is not completely gone, because the mean objective value doesn't convergence towards the best objective value. There is some variability on the solutions that are found. The best objective value found has still an error of $ 6.0 \% $ with the optimal objective value of $ 9000 $
 
 
 \subsection{tour929.csv}
-The best tour length that is found  has a cost of $  $.
+The convergence plot can be seen in Figure \ref{fig:convergence_tour9292}.
+The best tour length that is found  has a cost of $  103513.37 $.
 The parameters used are picked by hand and are summarized by: 
 \begin{itemize}
-	\item Population size: $ 100 $
+	\item Population size: $ 10 $
 	\item Mutation rate: $ 0.02 $
-	\item Amount of loops of the ``3-opt'' local search: $ 5 $
-	\item Amount of times no different best solution: $ 20 $ 
+	\item Amount of loops of the ``3-opt'' local search: $ 1 $
+	\item Amount of times no different best solution: $ 100 $ 
 \end{itemize}
+
+
+\begin{figure}[h]
+	\includegraphics[width=1.0\textwidth]{convergence_tour9292.PNG}
+	\caption{Convergence plot of the tour 929 TSP}
+	\label{fig:convergence_tour9292}
+	\centering
+\end{figure}
+
+It can be seen that only a small amount of iterations could be performed because of the high calculation load. Diversity is not instantaneous lost and the best objective value found, makes an error of $ 8.0 \% $ with the optimal objective value $ 95300 $.
 
 
 
@@ -347,6 +371,7 @@ Evolutionary algorithms provide solution approaches that are very general and ap
 
 %\cite{fast_alg}
 %\cite{inver_over}
+\clearpage
 \bibliographystyle{abbrv}
 \bibliography{Evolutionary_Alg}
 

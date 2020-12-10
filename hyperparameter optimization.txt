@@ -1,0 +1,324 @@
+##################################################
+Initial population size: 20
+p (mutation): 0.02
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9680.928008373214
+Mean score over 8 iterations:	9708.499470004066
+Mean time used:	8  iterations: 301.4482681751251
+##################################################
+##################################################
+Initial population size: 20
+p (mutation): 0.02
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9652.158926629447
+Mean score over 8 iterations:	9710.069209261832
+Mean time used:	8  iterations: 303.17147755622864
+##################################################
+##################################################
+Initial population size: 20
+p (mutation): 0.02
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9646.147887413099
+Mean score over 8 iterations:	9707.045787100667
+Mean time used:	8  iterations: 303.4696682691574
+##################################################
+##################################################
+Initial population size: 20
+p (mutation): 0.15
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9676.536125341781
+Mean score over 8 iterations:	9738.700102095332
+Mean time used:	8  iterations: 301.464490622282
+##################################################
+##################################################
+Initial population size: 20
+p (mutation): 0.15
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9669.979990899174
+Mean score over 8 iterations:	9715.243027658471
+Mean time used:	8  iterations: 303.69544073939323
+##################################################
+##################################################
+Initial population size: 20
+p (mutation): 0.15
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9684.277578954432
+Mean score over 8 iterations:	9743.0506911433
+Mean time used:	8  iterations: 304.0087889134884
+##################################################
+##################################################
+Initial population size: 20
+p (mutation): 0.25
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9601.26955565834
+Mean score over 8 iterations:	9749.284822505319
+Mean time used:	8  iterations: 301.6410885155201
+##################################################
+##################################################
+Initial population size: 20
+p (mutation): 0.25
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9694.29561370744
+Mean score over 8 iterations:	9755.542343514157
+Mean time used:	8  iterations: 303.5402962863445
+##################################################
+##################################################
+Initial population size: 20
+p (mutation): 0.25
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9617.444078568804
+Mean score over 8 iterations:	9702.49041542588
+Mean time used:	8  iterations: 302.91124126315117
+##################################################
+##################################################
+Initial population size: 75
+p (mutation): 0.02
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9601.613575031068
+Mean score over 8 iterations:	9692.3236409531
+Mean time used:	8  iterations: 305.86861276626587
+##################################################
+##################################################
+Initial population size: 75
+p (mutation): 0.02
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9569.903722386349
+Mean score over 8 iterations:	9703.049773279883
+Mean time used:	8  iterations: 316.04648193717003
+##################################################
+##################################################
+Initial population size: 75
+p (mutation): 0.02
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9628.06012403484
+Mean score over 8 iterations:	9695.132023604898
+Mean time used:	8  iterations: 314.7148456275463
+##################################################
+##################################################
+Initial population size: 75
+p (mutation): 0.15
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9646.2347467723
+Mean score over 8 iterations:	9703.3136038708
+Mean time used:	8  iterations: 304.5730268359184
+##################################################
+##################################################
+Initial population size: 75
+p (mutation): 0.15
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9616.886940186276
+Mean score over 8 iterations:	9701.908241716643
+Mean time used:	8  iterations: 308.42704263329506
+##################################################
+##################################################
+Initial population size: 75
+p (mutation): 0.15
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9669.979990899174
+Mean score over 8 iterations:	9710.376662085258
+Mean time used:	8  iterations: 312.73438051342964
+##################################################
+##################################################
+Initial population size: 75
+p (mutation): 0.25
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9708.904807048564
+Mean score over 8 iterations:	9725.542404219395
+Mean time used:	8  iterations: 304.0440625846386
+##################################################
+##################################################
+Initial population size: 75
+p (mutation): 0.25
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9697.16902497391
+Mean score over 8 iterations:	9724.192534713897
+Mean time used:	8  iterations: 314.1458404958248
+##################################################
+##################################################
+Initial population size: 75
+p (mutation): 0.25
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9650.32027401165
+Mean score over 8 iterations:	9708.003115478743
+Mean time used:	8  iterations: 323.61867222189903
+##################################################
+##################################################
+Initial population size: 100
+p (mutation): 0.02
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9633.876180627354
+Mean score over 8 iterations:	9714.75680595297
+Mean time used:	8  iterations: 306.46801218390465
+##################################################
+##################################################
+Initial population size: 100
+p (mutation): 0.02
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9639.767735296313
+Mean score over 8 iterations:	9695.930508560621
+Mean time used:	8  iterations: 331.70390686392784
+##################################################
+##################################################
+Initial population size: 100
+p (mutation): 0.02
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9646.141554871005
+Mean score over 8 iterations:	9686.27843183158
+Mean time used:	8  iterations: 323.40993931889534
+##################################################
+##################################################
+Initial population size: 100
+p (mutation): 0.15
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9690.474727894703
+Mean score over 8 iterations:	9713.055014099864
+Mean time used:	8  iterations: 306.89941281080246
+##################################################
+##################################################
+Initial population size: 100
+p (mutation): 0.15
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9657.620334453068
+Mean score over 8 iterations:	9718.114488005827
+Mean time used:	8  iterations: 310.2051983177662
+##################################################
+##################################################
+Initial population size: 100
+p (mutation): 0.15
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9641.31742278288
+Mean score over 8 iterations:	9705.631999607092
+Mean time used:	8  iterations: 318.28576296567917
+##################################################
+##################################################
+Initial population size: 100
+p (mutation): 0.25
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9681.60274487549
+Mean score over 8 iterations:	9720.35718178744
+Mean time used:	8  iterations: 309.8170521557331
+##################################################
+##################################################
+Initial population size: 100
+p (mutation): 0.25
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9700.144912387485
+Mean score over 8 iterations:	9731.034432795632
+Mean time used:	8  iterations: 320.05245292186737
+##################################################
+##################################################
+Initial population size: 100
+p (mutation): 0.25
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9669.979990899174
+Mean score over 8 iterations:	9710.885173489729
+Mean time used:	8  iterations: 330.2845484018326
+##################################################
+##################################################
+Initial population size: 150
+p (mutation): 0.02
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9705.350635711198
+Mean score over 8 iterations:	9728.484128225966
+Mean time used:	8  iterations: 318.58289763331413
+##################################################
+##################################################
+Initial population size: 150
+p (mutation): 0.02
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9683.114045345184
+Mean score over 8 iterations:	9710.710087572847
+Mean time used:	8  iterations: 328.16032618284225
+##################################################
+##################################################
+Initial population size: 150
+p (mutation): 0.02
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9685.44934131952
+Mean score over 8 iterations:	9712.363599474174
+Mean time used:	8  iterations: 308.94122302532196
+##################################################
+##################################################
+Initial population size: 150
+p (mutation): 0.15
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9710.556820204558
+Mean score over 8 iterations:	9747.05715127612
+Mean time used:	8  iterations: 314.8249395787716
+##################################################
+##################################################
+Initial population size: 150
+p (mutation): 0.15
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9687.56207207014
+Mean score over 8 iterations:	9722.184979870413
+Mean time used:	8  iterations: 331.36262053251266
+##################################################
+##################################################
+Initial population size: 150
+p (mutation): 0.15
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9706.179987244801
+Mean score over 8 iterations:	9722.071468930571
+Mean time used:	8  iterations: 317.28669756650925
+##################################################
+##################################################
+Initial population size: 150
+p (mutation): 0.25
+poss_Opt_3_iteration: 1
+# of termination iterations: 100
+Best score over 8 iterations: 9710.556820204558
+Mean score over 8 iterations:	9742.735666608052
+Mean time used:	8  iterations: 308.46294462680817
+##################################################
+##################################################
+Initial population size: 150
+p (mutation): 0.25
+poss_Opt_3_iteration: 3
+# of termination iterations: 100
+Best score over 8 iterations: 9704.609053753558
+Mean score over 8 iterations:	9722.21516142812
+Mean time used:	8  iterations: 329.74201184511185
+##################################################
+##################################################
+Initial population size: 150
+p (mutation): 0.25
+poss_Opt_3_iteration: 5
+# of termination iterations: 100
+Best score over 8 iterations: 9710.556820204558
+Mean score over 8 iterations:	9720.576204285771
+Mean time used:	8  iterations: 315.5420166552067
+##################################################
