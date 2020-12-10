@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.2)  10 DEC 2020 12:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.2)  10 DEC 2020 17:30
 entering extended mode
 **./EA_Template_Final.tex
 (EA_Template_Final.tex
@@ -434,54 +434,62 @@ File: Convergence_tour29.PNG Graphic file (type png)
 Package pdftex.def Info: Convergence_tour29.PNG  used on input line 289.
 (pdftex.def)             Requested size: 495.07779pt x 284.16612pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+<hist_best.PNG, id=30, 1214.136pt x 674.2791pt>
+File: hist_best.PNG Graphic file (type png)
+<use hist_best.PNG>
+Package pdftex.def Info: hist_best.PNG  used on input line 298.
+(pdftex.def)             Requested size: 495.07779pt x 274.94379pt.
 
-LaTeX Warning: Reference `label' on page 6 undefined on input line 295.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+<hist_mean.PNG, id=32, 1214.136pt x 674.2791pt>
+File: hist_mean.PNG Graphic file (type png)
+<use hist_mean.PNG>
+Package pdftex.def Info: hist_mean.PNG  used on input line 306.
+(pdftex.def)             Requested size: 495.07779pt x 274.94379pt.
 
-LaTeX Warning: Reference ` ' on page 6 undefined on input line 295.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<convergence_tour100.PNG, id=30, 1096.095pt x 648.17157pt>
+[6] [7 <./Convergence_tour29.PNG> <./hist_best.PNG>] [8 <./hist_mean.PNG>]
+<convergence_tour100.PNG, id=45, 1096.095pt x 648.17157pt>
 File: convergence_tour100.PNG Graphic file (type png)
 <use convergence_tour100.PNG>
 Package pdftex.def Info: convergence_tour100.PNG  used on input line 321.
 (pdftex.def)             Requested size: 495.07779pt x 292.76244pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6]
-<convergence_tour194.PNG, id=34, 1099.10625pt x 630.85687pt>
+<convergence_tour194.PNG, id=46, 1099.10625pt x 630.85687pt>
 File: convergence_tour194.PNG Graphic file (type png)
 <use convergence_tour194.PNG>
 Package pdftex.def Info: convergence_tour194.PNG  used on input line 335.
 (pdftex.def)             Requested size: 495.07779pt x 284.16212pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<convergence_tour9292.PNG, id=35, 1102.1175pt x 630.85687pt>
+<convergence_tour9292.PNG, id=47, 1102.1175pt x 630.85687pt>
 File: convergence_tour9292.PNG Graphic file (type png)
 <use convergence_tour9292.PNG>
 Package pdftex.def Info: convergence_tour9292.PNG  used on input line 357.
 (pdftex.def)             Requested size: 495.07779pt x 283.38242pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7 <./Convergence_tour29.PNG>] [8 <./convergence_tour100.PNG>] [9 <./convergenc
-e_tour194.PNG> <./convergence_tour9292.PNG>] (EA_Template_Final.bbl) [10
+[9
 
-]
-(EA_Template_Final.aux)
+ <./convergence_tour100.PNG>] [10 <./convergence_tour194.PNG> <./convergence_to
+ur9292.PNG>] (EA_Template_Final.bbl) [11
+
+] (EA_Template_Final.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 8214 strings out of 479799
- 127533 string characters out of 2879599
+ 8228 strings out of 479799
+ 127803 string characters out of 2879599
  461681 words of memory out of 3000000
- 25098 multiletter control sequences out of 15000+200000
+ 25110 multiletter control sequences out of 15000+200000
  548424 words of font info for 69 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,11n,72p,1577b,610s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -497,9 +505,9 @@ type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public
 /amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/palatino/uplb8a
 .pfb><C:/Program Files/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program F
 iles/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on EA_Template_Final.pdf (10 pages, 497756 bytes).
+Output written on EA_Template_Final.pdf (11 pages, 557773 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
+ 101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

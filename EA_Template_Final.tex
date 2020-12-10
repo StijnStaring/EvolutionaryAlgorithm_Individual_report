@@ -285,38 +285,38 @@ The parameters used to obtain the convergence plot were picked by hand and are l
 Because the mean and best solution don't directly convergence to each other, it can be concluded that the problem of instantaneous loss of the diversity is solved. Also, the solution isn't changing much anymore after $ 15 $ seconds. The algorithm convergences consistent to the optimal value. 
 
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\includegraphics[width=1\textwidth]{Convergence_tour29.PNG}
 	\caption{Convergence plot of the tour 29 TSP}
 	\label{fig:convergence_tour29}
 	\centering
 \end{figure}
 
-The mean best solution and the standard deviation of the tour 29 TSP after $ 1000 $ runs is given by ...  and ... respectively. Figure\ref{label} and \ref{ } show the distribution of the best and the mean solution. It can be concluded that optimal solutions were consistently found for the tour29 problem.  
+The mean best objective value and the standard deviation of the best objective value of the tour 29 TSP after $ 1000 $ runs is given by 27154.55  and 0.58 respectively. The mean value of the mean objective values and the standard deviation of the mean objective values is given by 27286.63 and 63.95 respectively. Figure\ref{fig:hist_best_sol} and \ref{fig:hist_mean_sol} show the distribution of the best and the mean solution. It can be concluded that optimal solutions were consistently found for the tour29 problem.  
 
-%\begin{figure}[h]
-%	\label{fig:hist_best_sol}
-%	\includegraphics[width=1\textwidth]{hist_best.PNG}
-%	\caption{Histogram of the best solutions attained during $ 1000 $ runs of the tour 29 problem.}
-%	\centering
-%\end{figure}
-
-
-%\begin{figure}[h]
-%	\label{fig:hist_mean_sol}
-%	\includegraphics[width=1\textwidth]{hist_mean.PNG}
-%	\caption{Histogram of the mean solutions attained during $ 1000 $ runs of the tour 29 problem.}
-%	\centering
-%\end{figure}
+\begin{figure}[h!]
+	\includegraphics[width=1\textwidth]{hist_best.PNG}
+	\caption{Histogram of the best solutions attained during $ 1000 $ runs of the tour 29 problem.}
+	\label{fig:hist_best_sol}
+	\centering
+\end{figure}
 
 
+\begin{figure}[h!]
+	\includegraphics[width=1\textwidth]{hist_mean.PNG}
+	\caption{Histogram of the mean solutions attained during $ 1000 $ runs of the tour 29 problem.}
+	\label{fig:hist_mean_sol}
+	\centering
+\end{figure}
 
+
+\clearpage
 
 \subsection{tour100.csv}
 The best tour length that is found has a cost of $ 7510.80 $.\footnote{The runtime warning encountered during testing is no problem. To remove it, redundant code is necessary that would make the implementation slower. }
 The parameters used can be seen in Table \ref{t:parameters} and the convergence plot is given by Figure \ref{fig:convergence_tour100}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	
 	\includegraphics[width=1.0\textwidth]{convergence_tour100.PNG}
 	\caption{Convergence plot of the tour 100 TSP}
@@ -324,14 +324,14 @@ The parameters used can be seen in Table \ref{t:parameters} and the convergence 
 	\centering
 \end{figure}
 
-Divergence stays sufficient high and reasonable solutions are attained. The best solution of the three has still an error of $ 2.1 \% $ with respect to the optimal solution. There is also more variability on the obtained solutions. It can be expected that when the algorithm is given more calculation resources, the variance will also decrease. All three solutions use the total $ 5 $ minutes of calculation time.
+The divergence stays sufficient high and reasonable solutions are attained. The best solution of the three has still an error of $ 2.1 \% $ with respect to the optimal solution. There is also more variability on the obtained solutions. It can be expected that when the algorithm is given more calculation resources, the variance will also decrease. All three solutions use the total $ 5 $ minutes of calculation time.
 
 \subsection{tour194.csv}
 The convergence plot can be seen in Figure \ref{fig:convergence_tour194}.
 The best tour length that is found during these $ 3 $ runs has a cost of $9716.99  $ which means that all these three runs behaved worse than the mean best value identified during hyperparameters optimization. Here the mean best value was $ 9703.05 $ with a best objective value over $ 8 $ runs of $ 9569.90 $.
 The parameters used can be seen in Table \ref{t:parameters}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\includegraphics[width=1.0\textwidth]{convergence_tour194.PNG}
 	\caption{Convergence plot of the tour 194 TSP}
 	\label{fig:convergence_tour194}
@@ -353,7 +353,7 @@ The parameters used are picked by hand and are summarized by:
 \end{itemize}
 
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\includegraphics[width=1.0\textwidth]{convergence_tour9292.PNG}
 	\caption{Convergence plot of the tour 929 TSP}
 	\label{fig:convergence_tour9292}
@@ -362,7 +362,7 @@ The parameters used are picked by hand and are summarized by:
 
 It can be seen that only a small amount of iterations could be performed because of the high calculation load. Diversity is not instantaneous lost and the best objective value found, makes an error of $ 8.0 \% $ with the optimal objective value $ 95300 $.
 
-
+\clearpage
 
 \section{Critical reflection}
 
@@ -371,7 +371,7 @@ Evolutionary algorithms provide solution approaches that are very general and ap
 
 %\cite{fast_alg}
 %\cite{inver_over}
-\clearpage
+
 \bibliographystyle{abbrv}
 \bibliography{Evolutionary_Alg}
 
